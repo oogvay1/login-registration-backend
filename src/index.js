@@ -1,8 +1,12 @@
 import express from "express";
 import dotenv from "dotenv";
-import connectDB from "./libs/db";
+import connectDB from "./libs/db.js";
 import morgan from "morgan";
 import cors from "cors";
+
+import userRoutes from "./routes/auth.route.js"
+import { getUser } from "./controllers/auth.controller.js";
+import { protect } from "./middlewares/protect.middleware.js";
 
 dotenv.config();
 
@@ -14,7 +18,7 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(cors());
 
-app.use('api/users', userRoutes);
+app.use('/users', userRoutes);
 
 const PORT = process.env.PORT;
 

@@ -36,7 +36,39 @@ export const signup = asyncHandler(async (req, res) => {
             throw new Error('Invalid user Data');
         }
     } catch (error) {
+        res.status(400).json({ message: "Server error" });
+        console.error(error.message);
+    }
+});
+
+export const login = asyncHandler(async (req, res) => {
+
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+
+    try {
+
+        if (user && (await user.matchPassword(password))) {
+
+            return res.json({
+                _id: user._id,
+                name: user.fullName,
+                email: user.email,
+                isAdmin: user.isAdmin,
+                token: generateToken(user._id)
+            });
+        } else {
+            req.status(401);
+            throw new Error('Invalid email or password');
+        }
+    } catch (error) {
         res.status(400).json({message: "Server error"});
         console.error(error.message);
     }
+});
+
+
+export const getUser = asyncHandler(async (req, res) => {
+
+    res.status(200).json(req.user);
 });

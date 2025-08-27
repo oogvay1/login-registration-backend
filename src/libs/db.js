@@ -4,15 +4,10 @@ export default async function connectDB() {
     const URL = process.env.MONGO_URI
 
     try {
-        await mongoose.connect(URL, {
-            useNewUrlParser: true,
-            useFindAndModify: true,
-            useCreateIndex: true,
-            useUnifiedTopology: true,
-        });
+        await mongoose.connect(URL);
 
-        console.log('MongoDB is connected')
+        console.log('MongoDB is connected');
     } catch (error) {
-        console.log(error.message);
+        console.log('MongoDB is not connected');
     }
 }
