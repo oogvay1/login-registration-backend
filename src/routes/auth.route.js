@@ -2,8 +2,9 @@ import express from "express";
 import {
     getUser,
     login,
-    signup
+    signup,
 } from "../controllers/auth.controller.js";
+import { v2 as cloudinary } from "cloudinary";
 import { admin, protect } from "../middlewares/protect.middleware.js";
 
 const router = express.Router();

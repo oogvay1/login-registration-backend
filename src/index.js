@@ -5,8 +5,7 @@ import morgan from "morgan";
 import cors from "cors";
 
 import userRoutes from "./routes/auth.route.js"
-import { getUser } from "./controllers/auth.controller.js";
-import { protect } from "./middlewares/protect.middleware.js";
+import uploadRoutes from "./routes/upload.route.js"
 
 dotenv.config();
 
@@ -18,6 +17,7 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(cors());
 
+app.use('/upload', uploadRoutes)
 app.use('/users', userRoutes);
 
 const PORT = process.env.PORT;

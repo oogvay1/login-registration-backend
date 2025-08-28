@@ -14,7 +14,7 @@ export const signup = asyncHandler(async (req, res) => {
         }
 
         if (!password.length < 0) {
-            return res.status(400).json({ message: "Password must be at least 6 characters" });
+            return res.status(400).json({ message: "Passwo`rd must be at least 6 characters" });
         }
 
         if (isExist) {
@@ -62,11 +62,10 @@ export const login = asyncHandler(async (req, res) => {
             throw new Error('Invalid email or password');
         }
     } catch (error) {
-        res.status(400).json({message: "Server error"});
+        res.status(400).json({ message: "Server error" });
         console.error(error.message);
     }
 });
-
 
 export const getUser = asyncHandler(async (req, res) => {
 
