@@ -1,19 +1,18 @@
 import cloudinary from "../config/cloudinary.js";
-import Post from "../models/posts.model.js";
 import fs from "fs"
+import savePost from "../utils/savePost.js";
 
 const uploadFile = async (req, res) => {
+    const { userId, description } = req.body;
+
     try {
-        console.log(req.body)
         const result = await cloudinary.uploader.upload(req.file.path, {
             resource_type: "auto",
         });
 
-        
-
         fs.unlinkSync(req.file.path);
 
-        console.log(result);
+        savePost(userId, description, result)
 
         res.json({ url: result.secure_url });
     } catch (err) {
