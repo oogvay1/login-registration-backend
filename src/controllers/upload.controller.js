@@ -1,4 +1,5 @@
 import cloudinary from "../config/cloudinary.js";
+import Post from "../models/posts.model.js";
 import fs from "fs"
 
 const uploadFile = async (req, res) => {
@@ -7,6 +8,8 @@ const uploadFile = async (req, res) => {
         const result = await cloudinary.uploader.upload(req.file.path, {
             resource_type: "auto",
         });
+
+        
 
         fs.unlinkSync(req.file.path);
 
