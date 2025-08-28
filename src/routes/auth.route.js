@@ -4,8 +4,7 @@ import {
     login,
     signup,
 } from "../controllers/auth.controller.js";
-import { v2 as cloudinary } from "cloudinary";
-import { admin, protect } from "../middlewares/protect.middleware.js";
+import { protect } from "../middlewares/protect.middleware.js";
 
 const router = express.Router();
 
