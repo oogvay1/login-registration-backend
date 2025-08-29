@@ -9,5 +9,5 @@ const upload = multer({ dest: "uploads/" });
 
 router.post("/", protect, upload.single("file"), uploadFile);
 router.post('/posts', protect, getPosts);
-
+    
 export default router;

@@ -17,8 +17,9 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(cors());
 
-app.use('/upload', uploadRoutes)
+app.use('/upload', uploadRoutes);
 app.use('/users', userRoutes);
+app.use('/chat', chat);
 
 const PORT = process.env.PORT;
 
