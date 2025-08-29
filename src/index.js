@@ -19,7 +19,7 @@ app.use(cors());
 
 app.use('/upload', uploadRoutes);
 app.use('/users', userRoutes);
-app.use('/chat', chat);
+// app.use('/chat', chat);
 
 const PORT = process.env.PORT;
 
