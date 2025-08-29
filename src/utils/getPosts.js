@@ -2,14 +2,15 @@ import Post from "../models/posts.model.js";
 
 export default async function getPosts(req, res) {
 
-    const { id } = req.body
 
     try {
+        const userId = req.user._id.toString();
 
-        const posts = await Post.find({ userId: id });
+        const posts = await Post.find({ userId });
 
         console.log(posts && posts);
+        res.send(posts);
     } catch (err) {
-
+        res.status(404).json({ message: "User id is not defined" });
     }
 }
